@@ -2,6 +2,8 @@ const express = require('express')
 const logger = require('morgan')
 const mongoose = require('mongoose')
 
+const indexRouter = require('./routes/indexRoute')
+
 const app = express()
 const port = 3000
 
@@ -21,7 +23,7 @@ app.use(logger('dev'))
 app.use(express.urlencoded({ extended: true }))
 
 // routes
-
+app.use('/', indexRouter)
 
 // server start
 app.listen(port, () => {
