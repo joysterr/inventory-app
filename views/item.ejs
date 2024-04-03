@@ -27,9 +27,11 @@
         </nav>
         <main>
             <div class="content__heading">
-                <h1><%= locals.title %></h1>
-                <p>Vegan or not, we got you!</p>
+                <h1><%= item.name %></h1>
+                <p class="item--category"><%= item.category.name %></p>
             </div>
+            <p><%= item.description %></p>
+            <p>Price: $<%= item.price %></p>
         </main>
     </body>
 </html>
