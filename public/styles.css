@@ -99,3 +99,43 @@ a {
 .item p {
     margin-bottom: 0.5rem;
 }
+
+/* Form styles */
+.content__form {
+    max-width: min(100%, 30rem);
+    margin-inline: auto;
+    padding: 3rem;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: left;
+
+    border-radius: 5px;
+
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content__form input, 
+.content__form select {
+    margin-block-end: 1rem;
+    padding: 0.25rem;
+    font-size: 1rem;
+}
+
+
+/* Button styles */
+.btn {
+    background-color: var(--c-primary); /* Purple button background */
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--c-on-primary); /* Darker purple on hover */
+}

@@ -24,3 +24,21 @@ exports.item_get = handler(async (req, res, next) => {
 
     res.render('item', { item: item })
 })
+
+// GET new item form
+exports.item_create_get = handler(async (req, res, next) => {
+    const allCategories = await Category.find()
+    .sort({ _id: 1 })
+    .exec()
+
+    res.render('item_form', {
+        title: "Add New Item",
+        item: null,
+        allCategories: allCategories
+    })
+})
+
+// CREATE new item
+exports.item_create_post = handler(async (req, res, next) => {
+    res.send('NEW ITEM CREATED!')
+})

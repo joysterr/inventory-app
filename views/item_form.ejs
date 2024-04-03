@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="/styles.css">
+
+        <title>Inventory App</title>
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="nav__logo">
+                <a href="/">
+                    <h1>Vout</h1>
+                </a>
+            </div>
+            <div class="nav__items">
+                <a href="/menu" class="nav__item nav__item--menu" id="nav-menu">Menu</a>
+                <a href="/about" class="nav__item nav__item--menu" id="nav-about">About</a>
+                <a href="/admin" class="nav__item nav__item--menu" id="nav-admin">Admin</a>
+            </div>
+        </nav>
+        <main>
+            <div class="content__heading">
+                <h1><%= locals.title %></h1>
+            </div>
+            <form action="<%= locals.item ? "/items/new" : "" %>" method="post" class="content__form">
+                <label for="itemName">Item Name</label>
+                <input type="text" name="itemName" id="itemName" placeholder="name" required value="<%= locals.item ? locals.item.name : '' %>">
+                <label for="itemDesc">Item Description</label>
+                <input type="text" name="itemDesc" id="itemDesc" placeholder="desc" required value="<%= locals.item ? locals.item.description : '' %>">
+                <label type="itemCategory">Item Category</label>
+                <select name="itemCategory" id="itemCategory" required>
+                    <% for( let index = 0; index < allCategories.length; index++ ) { %>
+                        <% if (locals.item && locals.item.category["name"] === allCategories[index].name) { %>
+                            <option value="<%= allCategories[index]._id %>" selected><%= allCategories[index].name %></option>
+                        <% } %>
+                        <option value="<%= allCategories[index]._id %>"><%= allCategories[index].name %></option>
+                    <% } %>
+                </select>
+                <label for="itemPrice">Item Price</label>
+                <input type="number" name="itemPrice" id="itemPrice" placeholder="price" required value="<%= locals.item ? locals.item.price : '' %>">
+                <label for="itemStock">Item Stock</label>
+                <input type="number" name="itemStock" id="itemStock" placeholder="stock" required value="<%= locals.item ? locals.item.stock : '' %>">
+                <% if (locals.item) { %>
+                    <button type="submit" class="btn">Save Item</button>
+                <% } else { %>
+                    <button type="submit" class="btn">Add Item</button>    
+                <% } %>
+            </form>
+            <% if (locals.errors) { %>
+                <ul>
+                    <% for( error of locals.errors ) { %>
+                        <li><%= error %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+        </main>
+    </body>
+</html>
