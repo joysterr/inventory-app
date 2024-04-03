@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="./styles.css">
+
+        <title>Inventory App</title>
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="nav__logo">
+                <a href="/">
+                    <h1>Vout</h1>
+                </a>
+            </div>
+            <div class="nav__items">
+                <a href="/category" class="nav__item nav__item--menu">Category</a>
+                <a href="/items" class="nav__item nav__item--menu">Items</a>
+                <a href="/admin/auth" class="nav__item nav__item--menu">Admin</a>
+            </div>
+        </nav>
+        <main>
+            <h1><%= locals.title %></h1>
+            <p>A solution to everything inventory!</p>
+        </main>
+    </body>
+</html>
