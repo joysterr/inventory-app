@@ -26,8 +26,22 @@
             </div>
         </nav>
         <main>
-            <h1><%= locals.title %></h1>
-            <p>Vegan or not, we got you!</p>
+            <div class="content__heading">
+                <h1><%= locals.title %></h1>
+                <p>Vegan or not, we got you!</p>
+            </div>
+            <div class="content__items">
+                <% items.forEach(item => { %>
+                <div class="item">
+                    <a href="/items/<%= item.id %>">
+                        <h3><%= item.name %></h3>
+                        <p class="item--category"><%= item.category.name %></p>
+                        <p>Stock: <%= item.stock %></p>
+                        <p>Price: $<%= item.price %></p>
+                    </a>
+                </div>
+                <% }) %>
+            </div>
         </main>
     </body>
 </html>

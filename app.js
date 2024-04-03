@@ -6,6 +6,8 @@ const indexRouter = require('./routes/indexRoute')
 const adminRouter = require('./routes/adminRoute')
 const menuRouter = require('./routes/menuRoute')
 const aboutRouter = require('./routes/aboutRoute')
+const itemsRouter = require('./routes/itemsRoute')
+
 
 const app = express()
 const port = 3000
@@ -30,6 +32,7 @@ app.use('/', indexRouter)
 app.use('/menu', menuRouter)
 app.use('/about', aboutRouter)
 app.use('/admin', adminRouter)
+app.use('/items', itemsRouter)
 
 // server start
 app.listen(port, () => {
