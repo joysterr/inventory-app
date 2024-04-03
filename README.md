@@ -1,14 +1,17 @@
-# Inventory Management App
-> Will eventually form the basis for VeganOut app
+# 🛒 Inventory Management App - VeganOut
+> for VeganOut app
 
-## Technologies used
+## ☘️ About VeganOut
+> We are a Vegan Only take-away franchise. Here to better the world and satisfy all your cravings at the same time. About damn time!
+
+## 🚀 Technologies used
 - Node.js, Express and MongoDB(mongoose)
 - ejs and CSS
 
-## Features
+## 📝 Features
 - General public can view the menu for the day
 - Allows admin to add, update and delete menu items
 
-## Future plans
+## 🔭 Future plans
 - user/admin authentication
 - shopping cart
