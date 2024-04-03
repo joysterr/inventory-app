@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 
 const indexRouter = require('./routes/indexRoute')
 const adminRouter = require('./routes/adminRoute')
+const menuRouter = require('./routes/menuRoute')
 
 const app = express()
 const port = 3000
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }))
 // routes
 app.use('/', indexRouter)
 app.use('/admin', adminRouter)
+app.use('/menu', menuRouter)
 
 // server start
 app.listen(port, () => {
