@@ -47,6 +47,10 @@ a {
     color: var(--c-on-primary);
 }
 
-.nav__item:not(:last-child) {
+.nav__item {
     margin-inline: 0.5rem;
+}
+
+.nav__item[id="nav-admin"] {
+    margin-inline-end: 0;
 }
