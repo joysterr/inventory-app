@@ -2,7 +2,7 @@
 > for VeganOut app
 
 ## ☘️ About VeganOut
-> We are a Vegan Only take-away franchise. Here to better the world and satisfy all your cravings at the same time. About damn time!
+> We are a Vegan Only take-away franchise, here to better the world and satisfy all your cravings. About damn time!
 
 ## 🚀 Technologies used
 - Node.js, Express and MongoDB(mongoose)
