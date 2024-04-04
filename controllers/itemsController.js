@@ -88,3 +88,34 @@ exports.item_create_post = [
         }
     })
 ]
+
+// GET manage item list
+exports.items_edit_get = handler(async (req, res, next) => {
+    const allItems = await Item.find({}, "name category stock price")
+        .sort({ category: 1 })
+        .populate("category")
+        .exec()
+
+    res.render('item_edit', { items: allItems })
+})
+
+// GET udpate item form
+exports.item_edit_item_get = handler(async (req, res, next) => {
+    const editItem = await Item.findById(req.params.id)
+        .populate('category')
+        .exec()
+
+    const allCategories = await Category.find()
+        .sort({ _id: 1 })
+        .exec()
+
+    if (editItem === null) {
+        return res.send('404: ITEM NOT FOUND')
+    }
+
+    res.render('item_form', {
+        title: "Update Item",
+        item: editItem,
+        allCategories: allCategories
+    })
+})

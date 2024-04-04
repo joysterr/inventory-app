@@ -10,7 +10,7 @@
         
         <link rel="stylesheet" href="/styles.css">
 
-        <title>Inventory App | Admin</title>
+        <title>Inventory App</title>
     </head>
     <body>
         <nav class="nav">
@@ -29,9 +29,22 @@
             <div class="content__heading">
                 <h1><%= locals.title %></h1>
             </div>
-            <div class="admin__tools">
-                <a href="/items/new">Create Items</a>
-                <a href="/items/edit">Manage Items</a>
+            <div class="content__items items--list">
+                <% items.forEach(item => { %>
+                    <div class="item">
+                        <a href="/items/<%= item.id %>">
+                            <h3><%= item.name %></h3>
+                        </a>
+                        <div class="btns">
+                            <form action="/items/edit/<%= item.id %>" method="get">
+                                <button type="submit" class="btn">Edit Item</button>
+                            </form>
+                            <form action="/items/delete/<%= item.id %>" method="post">
+                                <button type="submit" class="btn">Delete Item</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
             </div>
         </main>
     </body>

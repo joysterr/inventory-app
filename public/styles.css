@@ -100,6 +100,28 @@ a {
     margin-bottom: 0.5rem;
 }
 
+/* item edit list page */
+.items--list {
+    grid-template-columns: 1fr;
+}
+
+.items--list .item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.items--list .btns {
+    display: flex;
+    align-items: center;
+    gap: 0.50rem
+}
+
+.items--list .btns .btn {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--c-background);
+}
+
 /* Form styles */
 .content__form {
     max-width: min(100%, 30rem);
