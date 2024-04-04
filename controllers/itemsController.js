@@ -34,7 +34,7 @@ exports.item_create_get = handler(async (req, res, next) => {
 
     res.render('item_form', {
         title: "Add New Item",
-        item: null,
+        // item: null,
         allCategories: allCategories
     })
 })
@@ -144,12 +144,12 @@ exports.item_edit_item_post = [
         const errors = validationResult(req)
 
         const item = new Item({
+            _id: req.params.id,
             name: req.body.itemName,
             description: req.body.itemDesc,
             category: req.body.itemCategory,
             price: req.body.itemPrice,
             stock: req.body.itemStock,
-            _id: req.params.id
         })
 
         if (!errors.isEmpty()) {

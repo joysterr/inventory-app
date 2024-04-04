@@ -36,9 +36,7 @@
                             <h3><%= item.name %></h3>
                         </a>
                         <div class="btns">
-                            <form action="/items/edit/<%= item.id %>" method="get">
-                                <button type="submit" class="btn">Edit Item</button>
-                            </form>
+                            <a class="btn btn--edit" href="/items/edit/<%= item.id %>">Edit Item</a>
                             <form action="/items/delete/<%= item.id %>" method="post">
                                 <button type="submit" class="btn">Delete Item</button>
                             </form>

@@ -29,7 +29,7 @@
             <div class="content__heading">
                 <h1><%= locals.title %></h1>
             </div>
-            <form action="<%= locals.item ? "/items/new" : "" %>" method="post" class="content__form">
+            <form action=<%= locals.item ? `/items/edit/${locals.item._id}` : "/items/new" %> method="post" class="content__form">
                 <label for="itemName">Item Name</label>
                 <input type="text" name="itemName" id="itemName" placeholder="name" required value="<%= locals.item ? locals.item.name : '' %>">
                 <label for="itemDesc">Item Description</label>
