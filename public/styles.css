@@ -3,7 +3,7 @@
     --c-primary: #2ecc71;
     --c-on-primary: hsl(145, 66%, 16%);
 
-    --c-secondary: #3498db;
+    --c-secondary: #6c5ce7;
 
     --c-accent: #ff9900;
 
@@ -81,7 +81,7 @@ a {
 }
 
 .item a {
-    color: #6c5ce7; /* Purple item link color */
+    color: var(--c-secondary); /* Purple item link color */
     text-decoration: none;
 }
 
@@ -135,7 +135,7 @@ a {
 
     border-radius: 5px;
 
-    background-color: #fff;
+    background-color: var(--c-background);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -150,7 +150,7 @@ a {
 /* Button styles */
 .btn {
     background-color: var(--c-primary); /* Purple button background */
-    color: #fff;
+    color: var(--c-background);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
