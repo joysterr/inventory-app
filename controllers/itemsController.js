@@ -167,3 +167,16 @@ exports.item_edit_item_post = [
         }
     })
 ]
+
+// DELETE an item
+exports.item_delete_post = handler(async (req, res, next) => {
+    const itemExists = await Item.findById(req.params.id).exec()
+    if (!itemExists) {
+        console.log('dev: item does not exist')
+        res.redirect('/items/edit')
+    } else {
+        const deleteItem = await Item.findByIdAndDelete(req.params.id)
+        console.log(`dev: item: ${itemExists.name} has been deleted successfully`)
+        deleteItem && res.redirect('/items/edit')
+    }
+})

@@ -21,6 +21,9 @@ router.get('/edit/:id', Item.item_edit_item_get)
 // POST edit item form
 router.post('/edit/:id', Item.item_edit_item_post)
 
+// POST delete an item
+router.post('/delete/:id', Item.item_delete_post)
+
 // GET item by id
 router.get('/:id', Item.item_get)
 
