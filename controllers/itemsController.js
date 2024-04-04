@@ -1,4 +1,5 @@
 const handler = require('express-async-handler')
+const { body, validationResult } = require('express-validator')
 
 const Item = require('../models/Item')
 const Category = require('../models/Category')
@@ -28,8 +29,8 @@ exports.item_get = handler(async (req, res, next) => {
 // GET new item form
 exports.item_create_get = handler(async (req, res, next) => {
     const allCategories = await Category.find()
-    .sort({ _id: 1 })
-    .exec()
+        .sort({ _id: 1 })
+        .exec()
 
     res.render('item_form', {
         title: "Add New Item",
@@ -39,6 +40,51 @@ exports.item_create_get = handler(async (req, res, next) => {
 })
 
 // CREATE new item
-exports.item_create_post = handler(async (req, res, next) => {
-    res.send('NEW ITEM CREATED!')
-})
+exports.item_create_post = [
+    // sanitize
+    body("itemName", "Name must not be empty")
+        .trim()
+        .isLength({ min: 3 })
+        .escape(),
+    body("itemDesc", "Description must not be empty")
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
+    body("itemPrice", "Price must not be empty")
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
+    body("itemStock", "Stock must not be empty")
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
+    body("itemCategory").escape(),
+
+    handler(async (req, res, next) => {
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            const allCategories = await Category.find().sort({ _id: 1 }).exec()
+
+            res.render('item_form', {
+                title: "Add New Item",
+                allCategories: allCategories,
+                errors: errors.array()
+            })
+        } else {
+            const item = new Item({
+                name: req.body.itemName,
+                description: req.body.itemDesc,
+                category: req.body.itemCategory,
+                price: req.body.itemPrice,
+                stock: req.body.itemStock,
+            })
+
+            await item.save()
+
+            console.log("dev: successfully added", item.name)
+
+            res.redirect(item.url)
+        }
+    })
+]
