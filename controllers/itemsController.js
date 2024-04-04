@@ -119,3 +119,51 @@ exports.item_edit_item_get = handler(async (req, res, next) => {
         allCategories: allCategories
     })
 })
+
+// POST edited item 
+exports.item_edit_item_post = [
+    body("itemName", "Name must not be empty")
+        .trim()
+        .isLength({ min: 3 })
+        .escape(),
+    body("itemDesc", "Description must not be empty")
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
+    body("itemPrice", "Price must not be empty")
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
+    body("itemStock", "Stock must not be empty")
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
+    body("itemCategory").escape(),
+
+    handler(async (req, res, next) => {
+        const errors = validationResult(req)
+
+        const item = new Item({
+            name: req.body.itemName,
+            description: req.body.itemDesc,
+            category: req.body.itemCategory,
+            price: req.body.itemPrice,
+            stock: req.body.itemStock,
+            _id: req.params.id
+        })
+
+        if (!errors.isEmpty()) {
+            const allCategories = await Category.find().sort({ _id: 1 }).exec()
+
+            res.render('item_form', {
+                title: "Add New Item",
+                allCategories: allCategories,
+                item: item,
+                errors: errors.array()
+            })
+        } else {
+            const updatedItem = await Item.findByIdAndUpdate(req.params.id, item, {})
+            res.redirect('/items/' + updatedItem._id)
+        }
+    })
+]

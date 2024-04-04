@@ -18,6 +18,9 @@ router.get('/edit', Item.items_edit_get)
 // GET edit item form
 router.get('/edit/:id', Item.item_edit_item_get)
 
+// POST edit item form
+router.post('/edit/:id', Item.item_edit_item_post)
+
 // GET item by id
 router.get('/:id', Item.item_get)
 
